@@ -13,7 +13,7 @@ class Info(commands.Cog):
         helpEmbed = discord.Embed(
             title="Help", 
             description="[**GitHub**](https://github.com/TheTypingMatch/computer-man-bot/)",
-            color=0x40AC7B
+            color=0xf52597
         )
         for cmd in self.info:
             helpEmbed.add_field(
