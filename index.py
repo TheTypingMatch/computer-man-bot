@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = commands.Bot(command_prefix="!")
+client = commands.Bot(command_prefix="++")
 client.remove_command("help")
 
 @client.event
 async def on_ready():
-    print("I am the computer man and I am ready for questions. Thank you.")
+    print("I am the computer man and I am ready for questions now. Thank you.")
     await client.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching, 
