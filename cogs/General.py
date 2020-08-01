@@ -19,5 +19,9 @@ class General(commands.Cog):
 
         await msg.send(embed=embed)
 
+    @commands.command()
+    async def ping(self, msg):
+        await msg.send(f"**{round(self.client.latency * 1000)}**ms")
+
 def setup(client):
     client.add_cog(General(client))
