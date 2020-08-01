@@ -12,10 +12,11 @@ class General(commands.Cog):
     @commands.command()
     async def invite(self, msg):
         embed = discord.Embed(
-            title="Invite",
-            description="Invite the bot [**here**](https://canary.discord.com/api/oauth2/authorize?client_id=735326937643352065&permissions=8&scope=bot).",
+            title="**Invite**",
+            url="https://canary.discord.com/api/oauth2/authorize?client_id=735326937643352065&permissions=8&scope=bot",
             color=0xf52597
         )
+
         await msg.send(embed=embed)
 
 def setup(client):
