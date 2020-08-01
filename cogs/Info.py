@@ -10,17 +10,17 @@ class Info(commands.Cog):
 
     @commands.command()
     async def help(self, msg):
+        description = "[**GitHub**](https://github.com/TheTypingMatch/computer-man-bot/)\n"
+
+        for cmd in self.info:
+            description += f"\n`++{cmd}` - {self.info[cmd]}"
+
         helpEmbed = discord.Embed(
             title="Help", 
-            description="[**GitHub**](https://github.com/TheTypingMatch/computer-man-bot/)",
+            description=description,
             color=0xf52597
         )
-        for cmd in self.info:
-            helpEmbed.add_field(
-                name=f"++{cmd}",
-                value=self.info[cmd], 
-                inline=False
-            )
+
         await msg.send(embed=helpEmbed)
 
 def setup(client):
