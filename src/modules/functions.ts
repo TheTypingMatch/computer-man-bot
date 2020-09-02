@@ -41,11 +41,9 @@ const functions = (client: any) => {
                 leaderboard: [...topUsers]
             }, err => {
                 if (err) {
-                    client.logger.error('Unable to update leaderboard.');
+                    return client.logger.error('Unable to update leaderboard.');
                 }
-                else {
-                    client.logger.ready('Succesfully updated leaderboard.')
-                }
+                return client.logger.ready('Succesfully updated leaderboard.')
             });
         }
 

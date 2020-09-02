@@ -24,7 +24,9 @@ const reward = async (client, msg, user: any) => {
 
         if ((user.level + 1) % 5 === 0 && user.level < 100) {
             let lvlRole = msg.guild.roles.cache.find(role => role.name === `LVL ${user.level + 1}`);
+            let previousRole = msg.guild.roles.cache.find(role => role.name === `LVL ${user.level - 4}`);
             msg.member.roles.add(lvlRole);
+            msg.member.roles.remove(previousRole);
         }
     }
 
