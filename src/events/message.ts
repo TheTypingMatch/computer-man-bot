@@ -22,9 +22,9 @@ const reward = async (client, msg, user: any) => {
         msg.channel.send(levelUpEmbed);
         client.logger.log(`${user.name} leveled up to LVL ${user.level + 1}`);
 
-        if (user.level + 1 % 5 === 0 && user.level < 100) {
+        if ((user.level + 1) % 5 === 0 && user.level < 100) {
             let lvlRole = msg.guild.roles.cache.find(role => role.name === `LVL ${user.level + 1}`);
-            msg.member.addRole(lvlRole);
+            msg.member.roles.add(lvlRole);
         }
     }
 
@@ -83,7 +83,7 @@ module.exports = async (client: any, msg: any) => {
     if (!content.startsWith(config.prefix)) {
         return await (user) ? reward(client, msg, user) : createUser(msg);
     }
-    
+
     // Command handler
     run(cmd, msg, client, args);
 };
