@@ -1,7 +1,7 @@
 const colors: any = {
     red: 0xE84444,
     yellow: 0xF09F19,
-    green: 0x40AC7B
+    green: 0x7289da
 };
 
 const version = '1.0.0';

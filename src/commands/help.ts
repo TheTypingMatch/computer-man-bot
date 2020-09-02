@@ -16,7 +16,7 @@ export default (msg, client, args) => {
         .setColor(colors.green)
         .setAuthor('Help', msg.author.avatarURL())
         .setTimestamp(new Date())
-        .setFooter(`EventsBot v${version}`)
+        .setFooter(`Computer Man v${version}`)
         .addField('Categories', helpInfo.descInfo);
 
     if (args[0]) {
