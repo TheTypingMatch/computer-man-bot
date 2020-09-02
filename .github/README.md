@@ -1,7 +1,7 @@
 # Computer Man
 ![](https://img.shields.io/discord/650827847941881860?style=flat&logo=discord)
 
-A Discord.py bot for validating incoming member's profile pictures and usernames.
+A Discord.js bot for validating incoming member's profile pictures and usernames.
 
 # Setup
 1. Make sure you have installed [**Git**](https://git-scm.com/downloads), [**NodeJS**](https://nodejs.org/en/), & [**MongoDB Compass**](https://www.mongodb.com/try/download/compass).
