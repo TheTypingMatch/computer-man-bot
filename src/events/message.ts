@@ -16,7 +16,7 @@ const reward = async (client, msg, user: any) => {
     if (isLevelUp && isWithinCooldown) {
         let levelUpEmbed = new MessageEmbed()
             .setColor(colors.green)
-            .setDescription(`You leveled up to level **${user.level + 1}**!`)
+            .setDescription(`**${user.name}** up to level **${user.level + 1}**!`)
             .setAuthor(user.name, msg.author.avatarURL());
 
         msg.channel.send(levelUpEmbed);
