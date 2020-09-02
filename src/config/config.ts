@@ -1,6 +1,6 @@
 const colors: any = {
-    red: 0xE84444,
-    yellow: 0xF09F19,
+    red: 0xf52597,
+    yellow: 0x2c2f33,
     green: 0x7289da
 };
 

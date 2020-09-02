@@ -7,7 +7,7 @@ const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 const replaceCommas = (str: string[]) => `${str}`.replace(/,/g, '\n');
 
 const addCommandField = (info: any) => {
-    const infoDescription = Object.entries(info).map(desc => `\`/${desc[0]}\` ${desc[1]}`);
+    const infoDescription = Object.entries(info).map(desc => `\`+${desc[0]}\` ${desc[1]}`);
     return replaceCommas(infoDescription);
 };
 

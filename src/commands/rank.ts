@@ -4,11 +4,18 @@ import { User } from '../models/user.model';
 
 const insertCommas = (n: string | number) => n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
+const notFoundEmbed = new MessageEmbed()
+    .setColor(colors.yellow)
+    .setAuthor('User Not Found');
+
 export default async (msg, client, args) => {
     const userId = (args[0]) ? args[0].replace(/<|@|!|>/g, '') : msg.author.id;
     const user = await User.findOne({ discordId: userId });
-    const xpGoal = Math.floor(((10 * (user.level ** 1.5)) + 250));
+    if (!user) {
+        return msg.channel.send(notFoundEmbed);
+    }
 
+    const xpGoal = Math.floor(((10 * (user.level ** 1.5)) + 250));
     const statsEmbed = new MessageEmbed()
         .setColor(colors.green)
         .setAuthor(`${user.name}'s Stats`, msg.author.avatarURL())

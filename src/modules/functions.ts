@@ -39,12 +39,6 @@ const functions = (client: any) => {
             let topUsers = getTopTen(sortedUsers);
             Server.updateOne({ __v: 0 }, {
                 leaderboard: topUsers
-            }, err => {
-                if (err) {
-                    console.log('an error ocurrred')
-                } else {
-                    console.log('success')
-                }
             });
         }
 
