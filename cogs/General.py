@@ -10,13 +10,9 @@ class General(commands.Cog):
         self.client = client
 
     @commands.command()
-    async def invite(self, msg):
-        embed = discord.Embed(
-            title="Invite",
-            description="Invite the bot [**here**](https://canary.discord.com/api/oauth2/authorize?client_id=735326937643352065&permissions=8&scope=bot).",
-            color=0xf52597
-        )
-        await msg.send(embed=embed)
+    async def ping(self, msg):
+        ping = round(self.client.latency * 1000)
+        return await msg.send(f"**{ping}**ms")
 
 def setup(client):
     client.add_cog(General(client))

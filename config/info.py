@@ -1,4 +1,3 @@
 help = {
-    "help": "This.", 
-    "invite": "Invite the bot to your server.",
+    "ping": "Display bot latency."
 }
