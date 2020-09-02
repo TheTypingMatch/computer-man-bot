@@ -2,7 +2,7 @@ import { User } from '../models/user.model';
 import { Server } from '../models/server.model';
 import { Console } from 'console';
 
-const getTopTen = (arr: any[]) => arr.slice(-10);
+const getTopTen = (arr: any[]) => arr.slice(0, 10);
 
 // The sort type is the property of users that the function sorts by
 const sortUsers = (users: any[], sortType: string) => {
@@ -38,18 +38,27 @@ const functions = (client: any) => {
         } else {
             let topUsers = getTopTen(sortedUsers);
             Server.updateOne({ __v: 0 }, {
-                leaderboard: topUsers
+                leaderboard: [...topUsers]
+            }, err => {
+                if (err) {
+                    client.logger.error('Unable to update leaderboard.');
+                }
+                else {
+                    client.logger.ready('Succesfully updated leaderboard.')
+                }
             });
         }
 
         let rank = 1;
         for (let user of sortedUsers) {
             const { discordId } = user;
-            await User.updateOne({ discordId }, { rank });
+            await User.updateOne({ discordId: discordId }, { rank: rank }, err => {
+                if (err) {
+                    client.logger.error('Unable to update user rank.');
+                }
+            });
             rank += 1;
         }
-
-        return client.logger.ready('Successfully updated XP leaderboard.');
     }, 60 * 1000);
 };
 
