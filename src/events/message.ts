@@ -3,6 +3,7 @@ import { run } from '../commands';
 import { userInfo } from 'os';
 import { MessageEmbed } from 'discord.js';
 import { colors, version } from '../config/config';
+import { Guild } from '../models/guild.model';
 
 const reward = async (client, msg, user: any) => {
     let { lastReward, discordId } = user;
@@ -12,6 +13,13 @@ const reward = async (client, msg, user: any) => {
     let requiredXP = Math.floor(((10 * (user.level ** 1.5)) + 250));
     let isLevelUp = (user.xpProgress + xpReward > requiredXP)
     let isWithinCooldown = (now - lastReward > 60000);
+
+    let guildInfo = await Guild.findOne({ guildId: msg.guild.id })
+    let { ignoredXpChannels } = guildInfo;
+
+    if (ignoredXpChannels.includes(msg.channel.id)) {
+        return;
+    }
 
     if (isLevelUp && isWithinCooldown) {
         let levelUpEmbed = new MessageEmbed()
